@@ -1,54 +1,38 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shooter
+namespace Shooter2
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            bool Flag = true;
-            Console.WriteLine("Shooter:");
-            Console.Write("\r\n\tw - вперед\r\n\ts - назад\r\n\ta - влево\r\n\td - вправо\r\n\tSpace - прыжок\r\n\tEnter - огонь\r\n\tEsc - выйти");
-            Console.CursorLeft = 0; Console.CursorTop = 9;
+            int x = 25;
+            int y = 25;
+
+            Console.CursorVisible = false;
 
             ConsoleKey key;
             do
             {
-                //char key = Console.ReadKey().KeyChar;
+                Console.Clear();
+                Console.SetCursorPosition(x, y);
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("(0)");
+                Console.ResetColor();
                 key = Console.ReadKey(true).Key;
-                switch (key) {
-                    //case 'w': Console.WriteLine(" вперед"); break;
-                    //case 's': Console.WriteLine(" назад"); break;
-                    //case 'a': Console.WriteLine(" влево"); break;
-                    //case 'd': Console.WriteLine(" вправо"); break;
-                    //case (char)13: Console.WriteLine(" enter - огонь"); break;
-                    //case ' ': Console.WriteLine("space - прыжок"); break;
-
-                    case ConsoleKey.UpArrow:
-                    case ConsoleKey.W: Console.WriteLine(" вперед"); break;
-                    case ConsoleKey.DownArrow:
-                    case ConsoleKey.S: Console.WriteLine(" назад"); break;
-                    case ConsoleKey.LeftArrow:
-                    case ConsoleKey.A: Console.WriteLine(" влево"); break;
-                    case ConsoleKey.RightArrow:
-                    case ConsoleKey.D: Console.WriteLine(" вправо"); break;
-                    case ConsoleKey.Enter: Console.WriteLine(" enter - огонь"); break;
-                    case ConsoleKey.Spacebar: Console.WriteLine("space - прыжок"); break;
-
-
-                    case ConsoleKey.Escape:
-                        return;
-                    default:
-                        break;
+                switch (key)
+                {
+                    case ConsoleKey.W: case ConsoleKey.UpArrow: y--; break;
+                    case ConsoleKey.S: case ConsoleKey.DownArrow: y++; break;
+                    case ConsoleKey.A: case ConsoleKey.LeftArrow: x--; break;
+                    case ConsoleKey.D: case ConsoleKey.RightArrow: x++; break;
                 }
-            } while (Flag);
+            } while (key != ConsoleKey.Escape);
         }
     }
 }

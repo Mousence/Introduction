@@ -85,45 +85,46 @@ namespace Arrays
             Console.WriteLine($"Минимальное значение массива: {arr.Cast<int>().Min()}");
             Console.WriteLine($"Масксимальное значение массива: {arr.Cast<int>().Max()}"); 
 #endif
-            int[][] arr = new int[][] {
-            new int[] { 0, 1, 1, 2 },
-            new int[] { 3, 5, 8 },
-            new int[] { 13, 21 },
-            new int[] { 34, 55, 89}
-            };
+    int[][] arr = new int[][] {
+    new int[] { 0, 1, 1, 2 },
+    new int[] { 3, 5, 8 },
+    new int[] { 13, 21 },
+    new int[] { 34, 55, 89}
+    };
 
-            for (int i = 0; i < arr.Length; i++) {
-                for (int j = 0; j < arr.Length; j++)
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
                 {
-                    Console.WriteLine(arr[i][j] + "\t");
+                    Console.Write(arr[i][j] + "\t");
                 }
                 Console.WriteLine();
             }
 
-
             int min = arr[0][0], max = arr[0][0];
             for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = 0; j < arr.Length; j++)
+                for (int j = 0; j < arr[i].Length; j++)
                 {
                     if (max < arr[i][j])
                         max = arr[i][j];
-                    if(min > arr[i][j])
+                    if (min > arr[i][j])
                         min = arr[i][j];
                 }
             }
-            Console.WriteLine($" min = {min}, max = {max}");
+            Console.WriteLine($"min = {min}, max = {max}");
 
             int sum = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = 0; j < arr.GetLength(1); j++)
+                for (int j = 0; j < arr[i].Length; j++)
                 {
                     sum += arr[i][j];
                 }
             }
 
-            Console.WriteLine($" sum = {sum}");
+            Console.WriteLine($"sum = {sum}");
+            Console.WriteLine($"avg = {sum / (arr.Length * arr[0].Length)}");
         }
     }
 }
